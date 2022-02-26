@@ -14,5 +14,5 @@ app.get('/', (req, res) => {
   res.send('hello world')
 })
 // eslint-disable-next-line no-console
-console.log(`server started on port http://127.0.0.1:${PORT}`)
+console.warn(`server started on port http://127.0.0.1:${PORT}`)
 app.listen(PORT)

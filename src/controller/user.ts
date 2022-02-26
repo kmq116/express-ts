@@ -1,7 +1,10 @@
 import type { Request, Response } from 'express'
 import UserModel from '../models/user/user'
 import { MD5 } from '../utils/token'
-
+interface User {
+  username: string
+  password: string
+}
 class User {
   constructor() {}
 
@@ -21,6 +24,7 @@ class User {
     const token = MD5(username + password)
     try {
       const user = await UserModel.findOne({ username })
+
       if (user && user.password === MD5(password)) {
         res.send({
           code: 200,
@@ -55,6 +59,8 @@ class User {
     const md5password = MD5(password)
     try {
       const user = await UserModel.findOne({ username })
+      console.error(user)
+
       if (user) {
         return res.send({
           code: 201,
